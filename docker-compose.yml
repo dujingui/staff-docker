@@ -1,0 +1,29 @@
+services:
+  nginx:
+      build: ./nginx
+      ports:
+        - "8484:80"
+        - "8485:1212"
+      links:
+        - "php"
+      volumes:
+        - E:/Work/staff-docker/opt:/opt
+
+  php:
+      build: ./php
+      ports:
+        - "9000:9000"
+      links:
+        - "mysql"
+      volumes:
+        - E:/Work/staff-docker/opt:/opt
+
+  mysql:
+      build: ./mysql
+      ports:
+        - "3308:3306"
+      volumes:
+        - E:/Work/staff-docker/opt/data/mysql:/var/lib/mysql
+        - E:/Work/staff-docker/opt:/opt
+      environment:
+        MYSQL_ROOT_PASSWORD: 123456
