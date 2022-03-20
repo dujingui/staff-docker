@@ -27,3 +27,7 @@ services:
         - E:/Work/staff-docker/opt:/opt
       environment:
         MYSQL_ROOT_PASSWORD: 123456
+  redis:
+      image: "redis:4.0"
+      ports:
+        - "6379:6379"
